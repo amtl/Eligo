@@ -8,6 +8,9 @@
 
 #import "AppDelegate.h"
 
+#import "BARHomeViewController.h"
+#import "BARAppearance.h"
+
 @interface AppDelegate ()
 
 @end
@@ -16,7 +19,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Override point for customization after application launch.
+  [BARAppearance setUp];
+  UIViewController *vc = [[BARHomeViewController alloc] init];
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  UINavigationController *mainNavigationController = [[UINavigationController alloc] initWithRootViewController:vc];
+  self.window.rootViewController = mainNavigationController;
+  [self.window makeKeyAndVisible];
   return YES;
 }
 
